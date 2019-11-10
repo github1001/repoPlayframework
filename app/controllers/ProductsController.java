@@ -7,6 +7,7 @@ public class ProductsController extends Controller {
 
     //for all products
     public Result index(){
+
         return TODO();
     }
 

@@ -72,6 +72,7 @@ public class Product {
         return products.remove(product);
     }
 
+    
     @JsonCreator
     public Product(@JsonProperty("id") Integer id, @JsonProperty("item")  String item, @JsonProperty("price")  Integer price, @JsonProperty("manufacturer")  String manufacturer){
         this.id=id;

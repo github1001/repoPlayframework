@@ -22,6 +22,7 @@ GET /products/:id                    controllers.ProductsController.show(id: Int
 GET /products/edit/:id               controllers.ProductsController.edit(id :Integer)
 POST /products/edit                  controllers.ProductsController.update()
 POST /products/create                controllers.ProductsController.save()
+
 GET  /products/delete/:id            controllers.ProductsController.destruct(id:Integer)
 
 # Map static resources from the /public folder to the /assets URL path

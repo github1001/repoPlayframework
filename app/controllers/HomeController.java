@@ -79,6 +79,7 @@ public class HomeController extends Controller {
         options.socketKeepAlive(true);
         //We can add queried object into a new object, it'll find an object which id’s value equal to id
         Product prod = datastore.find(Product.class).field("id").equal(id).get();
+
         return ok(Json.toJson(prod));
     }
 
