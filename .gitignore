@@ -1,0 +1,5 @@
+.idea/*
+.idea/libraries/sbt__aopalliance_aopalliance_1_0_jar.xml
+logs/
+project/project/target/*
+project/target/*
