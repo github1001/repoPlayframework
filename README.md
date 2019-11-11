@@ -33,3 +33,8 @@ To build and run the project:
 3. After the message `Server started, ...` displays, enter the following URL in a browser: <http://localhost:9000>
 
 The Play application responds: `Welcome to the Hello World Tutorial!`
+
+# Mongo integration tests routes and associated controllers
+GET /productss/create                controllers.HomeController.createProduct()
+GET /productss/:id                   controllers.HomeController.getProduct(id: Integer)
+GET /productsss/all                  controllers.HomeController.showProduct()
