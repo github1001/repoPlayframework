@@ -1,4 +1,4 @@
-name := """play-java-hello-world-web"""
+name := """productApp"""
 organization := "com.example"
 
 description := "Play 2.7.x Module for Morphia http://mongodb.github.io/morphia/"
