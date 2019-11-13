@@ -56,14 +56,7 @@ public class HomeController extends Controller {
 
 
     public Result createProduct(){
-        final Morphia morphia = new Morphia();
 
-        //PackageName is the package where my Product class exists
-        morphia.mapPackage("models");
-        MongoClient mongoClient = new MongoClient("127.0.0.1",27017);
-        Datastore datastore = morphia.createDatastore(mongoClient, "databaseName");
-        MongoClientOptions.Builder options = MongoClientOptions.builder();
-        options.socketKeepAlive(true);
         //create a object
         //We can get data from client side
         // using POST/GET methods and pass them to the constructor too
@@ -71,12 +64,20 @@ public class HomeController extends Controller {
         Product prod2 = new Product(2, "chocolate bar", 2, "Sneakers");
         Product prod3 = new Product(3, "cereal", 5, "Kellogs");
         Product prod4 = new Product(4, "Isotonic", 3, "Revive");
-        List<Product> produce = new ArrayList<Product>();
-        produce.add(prod1);
-        produce.add(prod2);
-        produce.add(prod3);
-        produce.add(prod4);
-        datastore.save(produce);
+        Product prod5 = new Product(5, "coffee", 3, "Monnoko");
+        Product prod6 = new Product(6, "toothpaste", 3, "Oral B");
+        Product prod7 = new Product(7, "bag", 3, "giovanni");
+        Product prod8 = new Product(8, "table", 3, "Ikea");
+        product.save(prod1);
+        product.save(prod2);
+        product.save(prod3);
+        product.save(prod4);
+
+        product.save(prod5);
+        product.save(prod6);
+
+        product.save(prod7);
+        product.save(prod8);
         return ok(Json.toJson("Products" +
                 " Added"));
     }
