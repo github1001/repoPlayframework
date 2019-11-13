@@ -6,11 +6,13 @@ import models.Product;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import repositories.ProductRepository;
 import views.html.home.welcome;
 import xyz.morphia.Datastore;
 import xyz.morphia.Morphia;
 import xyz.morphia.query.Query;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +28,11 @@ public class HomeController extends Controller {
      * this method will be called when the application receives a
      * <code>GET</code> request with a path of <code>/</code>.
      */
+
+
+    @Inject
+    private ProductRepository product;
+
     public Result index() {
         return ok(views.html.index.render());
     }
@@ -47,10 +54,12 @@ public class HomeController extends Controller {
         return ok(views.html.hello.render(name));
     }
 
+
     public Result createProduct(){
         final Morphia morphia = new Morphia();
+
         //PackageName is the package where my Product class exists
-        morphia.mapPackage("model");
+        morphia.mapPackage("models");
         MongoClient mongoClient = new MongoClient("127.0.0.1",27017);
         Datastore datastore = morphia.createDatastore(mongoClient, "databaseName");
         MongoClientOptions.Builder options = MongoClientOptions.builder();
@@ -61,32 +70,30 @@ public class HomeController extends Controller {
        Product prod1 = new Product(1, "jelly", 3, "jerry");
         Product prod2 = new Product(2, "chocolate bar", 2, "Sneakers");
         Product prod3 = new Product(3, "cereal", 5, "Kellogs");
+        Product prod4 = new Product(4, "Isotonic", 3, "Revive");
         List<Product> produce = new ArrayList<Product>();
         produce.add(prod1);
         produce.add(prod2);
         produce.add(prod3);
+        produce.add(prod4);
         datastore.save(produce);
-        return ok(Json.toJson("Product Added"));
+        return ok(Json.toJson("Products" +
+                " Added"));
     }
 
-    public Result getProduct(int id){
-        final Morphia morphia = new Morphia();
-        //PackageName is the package where my Product class exists
-        morphia.mapPackage("model");
-        MongoClient mongoClient = new MongoClient("127.0.0.1",27017);
-        Datastore datastore = morphia.createDatastore(mongoClient, "databaseName");
-        MongoClientOptions.Builder options = MongoClientOptions.builder();
-        options.socketKeepAlive(true);
-        //We can add queried object into a new object, it'll find an object which id’s value equal to id
-        Product prod = datastore.find(Product.class).field("id").equal(id).get();
+    public Result getProduct(Integer id){
 
-        return ok(Json.toJson(prod));
+        Product u = product.findById(id);
+
+        return ok(Json.toJson(u));
     }
+
+
 
     public Result showProduct(){
         final Morphia morphia = new Morphia();
         //PackageName is the package where my Product class exists
-        morphia.mapPackage("model");
+        morphia.mapPackage("models");
         MongoClient mongoClient = new MongoClient("127.0.0.1",27017);
         Datastore datastore = morphia.createDatastore(mongoClient, "databaseName");
         MongoClientOptions.Builder options = MongoClientOptions.builder();
@@ -99,7 +106,7 @@ public class HomeController extends Controller {
     public int deleteProduct(int id) {
 
         final Morphia morphia = new Morphia();
-        morphia.mapPackage("model");
+        morphia.mapPackage("models");
         MongoClient mongoClient = new MongoClient("127.0.0.1",27017);
         Datastore datastore = morphia.createDatastore(mongoClient, "databaseName");
         MongoClientOptions.Builder options = MongoClientOptions.builder();

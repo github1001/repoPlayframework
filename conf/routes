@@ -17,7 +17,6 @@ GET /productss/create                 controllers.HomeController.createProduct()
 GET /productss/:id                       controllers.HomeController.getProduct(id: Integer)
 GET /productsss/all                  controllers.HomeController.showProduct()
 
-
 GET /products/:id                    controllers.ProductsController.show(id: Integer)
 GET /products/edit/:id               controllers.ProductsController.edit(id :Integer)
 POST /products/edit                  controllers.ProductsController.update()
