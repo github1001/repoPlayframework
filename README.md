@@ -35,7 +35,9 @@ To build and run the project:
 
 The Play application responds: `Welcome to the Product App!`
 
-# Mongo integration tests routes and associated controllers
+# Create sample data as below OR simply create product individually
 GET /productss/create                controllers.HomeController.createProduct()
+
+# Mongo integration tests routes and associated controllers
 GET /productss/:id                   controllers.HomeController.getProduct(id: Integer)
 GET /productsss/all                  controllers.HomeController.showProduct()
