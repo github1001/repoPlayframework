@@ -1,5 +1,12 @@
 .idea/*
 .idea/libraries/sbt__aopalliance_aopalliance_1_0_jar.xml
 logs/
-project/project/target/*
-project/target/*
+.g8/
+LICENSE
+NOTICE
+public/
+sbt
+sbt-dist/
+sbt.bat
+scripts/
+target/
