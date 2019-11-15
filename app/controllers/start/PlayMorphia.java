@@ -12,7 +12,6 @@ import javax.inject.Singleton;
 import java.lang.reflect.Constructor;
 import java.util.concurrent.CompletableFuture;
 
-
 @Singleton
 public class PlayMorphia {
 
@@ -35,11 +34,9 @@ public class PlayMorphia {
         });
     }
 
-
     PlayMorphia(Config config, ClassLoader classLoader, boolean isTestMode) throws Exception {
         configure(config,classLoader,isTestMode);
     }
-
 
     private void configure(Config config, ClassLoader classLoader, boolean isTestMode) throws Exception {
 
@@ -56,8 +53,7 @@ public class PlayMorphia {
         // Tell Morphia where to find our models
         morphia.mapPackage(factory.getModels());
 
-        datastore = morphia.createDatastore(
-                mongo, factory.getDBName());
+        datastore = morphia.createDatastore(mongo, factory.getDBName());
 
     }
 
@@ -88,7 +84,6 @@ public class PlayMorphia {
         }
         return new MongoClientFactory(config, isTestMode);
     }
-
 
     public MongoClient mongo() {
         return mongo;

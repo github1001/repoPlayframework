@@ -12,7 +12,6 @@ public class MongoClientFactory {
     protected boolean isTest;
     final Logger.ALogger log = Logger.of(this.getClass());
 
-
     public MongoClientFactory(Config config) {
         this.config = config;
     }
@@ -35,7 +34,6 @@ public class MongoClientFactory {
 
         return mongo;
     }
-
 
     /**
      * Returns the database name associated with the current configuration.
@@ -62,6 +60,5 @@ public class MongoClientFactory {
     public String getModels() {
         return config.getString("db.models");
     }
-
 
 }

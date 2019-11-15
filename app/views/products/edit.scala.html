@@ -1,0 +1,17 @@
+@(productFrom : Form[Product])
+@import helper._
+@layout("Edit product"){
+
+<h1>Create Book</h1>
+@helper.form(action=helper.CSRF(routes.ProductsController.update())){
+@helper.inputText(productFrom("id"),  'readonly -> "readonly")
+@helper.inputText(productFrom("item"))
+@helper.inputText(productFrom("price"))
+@helper.inputText(productFrom("manufacturer"))
+
+<input type="submit" value="Edit product">
+}
+
+
+
+}

@@ -1,0 +1,12 @@
+@(product: Product)
+@layout(product.item){
+
+<h2>@product.item</h2>
+<p> Price : @product.price</p>
+<p>Manufacturer : @product.manufacturer</p>
+
+<a href="@routes.ProductsController.edit(product.id)">Edit</a>
+
+<a href="@routes.ProductsController.destruct(product.id)">Delete</a>
+
+}

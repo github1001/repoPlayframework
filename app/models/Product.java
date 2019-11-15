@@ -1,23 +1,26 @@
 package models;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import play.data.validation.Constraints;
 import xyz.morphia.annotations.Entity;
 import xyz.morphia.annotations.Id;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity("Product")
 public class Product {
 
     @Id
-    private Integer id;
-    private String item;
-    private Integer price;
-    private String manufacturer;
+    public Integer id;
+    @Constraints.Required
+    public String item;
+    @Constraints.Required
+    public Integer price;
+    @Constraints.Required
+    public String manufacturer;
 
-    public Integer getId() {
-        return id;
-    }
+    public Integer getId() { return id; }
 
     public void setId(Integer id) {
         this.id = id;
@@ -47,39 +50,26 @@ public class Product {
         this.manufacturer = manufacturer;
     }
 
-
-    private static Set<Product> products;
-
-    public static Set<Product> allProducts(){
-        return products;
-    }
-
-    public static Product findById(Integer id){
-        for(Product product: products){
-            if(id.equals(product.id)){
-                return product;
-            }
-        }
-        return null;
-    }
-
-    public static void add(Product product){
-        products.add(product);
-    }
-    public static boolean remove(Product product){
-        return products.remove(product);
-    }
-
-    
     @JsonCreator
-    public Product(@JsonProperty("id") Integer id, @JsonProperty("item")  String item, @JsonProperty("price")  Integer price, @JsonProperty("manufacturer")  String manufacturer){
-        this.id=id;
-        this.item=item;
-        this.price=price;
-        this.manufacturer=manufacturer;
+    public Product(@JsonProperty("id") Integer id, @JsonProperty("item") String item, @JsonProperty("price") Integer price, @JsonProperty("manufacturer") String manufacturer) {
+        this.id = id;
+        this.item = item;
+        this.price = price;
+        this.manufacturer = manufacturer;
     }
+
     @JsonCreator
     public Product() {
+    }
+
+    private static List<Product> productss;
+
+    public static List<Product> getProductss() {
+        return productss;
+    }
+
+    public static void setProductss(List<Product> productss) {
+        Product.productss = productss;
     }
 
     @Override

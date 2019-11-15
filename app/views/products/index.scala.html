@@ -1,0 +1,21 @@
+@(products : List[Product])
+@layout("All Books"){
+
+<h1>All products</h1>
+
+@for(product <- products){
+
+<a href="@routes.ProductsController.show(product.id)">@product.getItem</a>
+<p>Price : @product.getPrice</p>
+<p> Manufacturer : @product.getManufacturer</p>
+
+<br/>
+
+
+}
+
+<a href="@routes.ProductsController.create()">Create Product</a>
+
+
+
+}

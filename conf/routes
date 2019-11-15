@@ -9,19 +9,19 @@ GET    /tutorial                    controllers.HomeController.tutorial
 GET /hello controllers.HomeController.hello(name: String)
 GET /about/:name/:lastName             controllers.HomeController.about(name: String, lastName:String)
 
-GET /products                        controllers.ProductsController.index()
-GET /products/create                 controllers.ProductsController.create()
-
 # Mongo tests
 GET /productss/create                 controllers.HomeController.createProduct()
 GET /productss/:id                       controllers.HomeController.getProduct(id: Integer)
+GET /productssss/:id                       controllers.HomeController.deleteProduct(id: Integer)
 GET /productsss/all                  controllers.HomeController.showProduct()
 
+# Product web application routes
+GET /products                        controllers.ProductsController.index()
+GET /products/create                 controllers.ProductsController.create()
 GET /products/:id                    controllers.ProductsController.show(id: Integer)
 GET /products/edit/:id               controllers.ProductsController.edit(id :Integer)
 POST /products/edit                  controllers.ProductsController.update()
 POST /products/create                controllers.ProductsController.save()
-
 GET  /products/delete/:id            controllers.ProductsController.destruct(id:Integer)
 
 # Map static resources from the /public folder to the /assets URL path

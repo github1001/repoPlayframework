@@ -1,0 +1,18 @@
+@(productFrom : Form[Product])
+@import helper._
+
+@layout("Create Product"){
+
+
+<h1>Create Product</h1>
+@helper.form(action=helper.CSRF(routes.ProductsController.save())){
+@helper.inputText(productFrom("id"))
+@helper.inputText(productFrom("item"))
+@helper.inputText(productFrom("price"))
+@helper.inputText(productFrom("manufacturer"))
+
+<input type="submit" value="create product">
+}
+
+
+}
