@@ -1,4 +1,4 @@
-# Under development
+# Product checklist
 
 Using the play framework, project aims to develop a product checklists; an app for management and maintenance for utility by distributors or retail stores
 
